@@ -17,9 +17,11 @@ This exercise will demonstrate the following in the example video:
 
 
 
-VAR health = 5
-VAR pet_name = ""
-VAR torches = 0 
+VAR pet_name = ""     
+VAR torches = 0       
+VAR health = 5        
+VAR money = 0         
+VAR level = 1         
 
 -> memory
 
@@ -29,7 +31,7 @@ Before you stands the cavern of Josh. You wish to name your childhood pet.
 ~ pet_name = "Charlie"
 -> cave_mouth 
 [Susan] 
-~ pet_name = "Susan" 
+~ pet_name = "Susan"
 -> cave_mouth 
 [Spot] 
 ~ pet_name = "Spot"
@@ -85,6 +87,7 @@ He pulls a jagged dagger from his cloak and snarls: *“You should never have co
 
 == old_man_staked ==
 You drive a sharpened stake into the old man’s chest. He lets out a terrible cry before collapsing into the sand.  
+~ level = level + 1
 Among his torn robes, you discover a weathered map showing the way to a hidden **treasure room**.  
 + [Follow the map to the treasure room] -> treasure_room
 -> END
@@ -126,9 +129,15 @@ You lose 3 more health. You now have {health} health left.
 
 == treasure_room ==
 You enter a small chamber. Piles of gold and silver surround a stone pedestal. The treasure is yours for the taking.  
-+ [Leave with the treasure] -> victory
+
++ [Leave with the treasure] -> take_treasure
 + [Leave quietly, taking nothing] -> east_tunnel_lit
 -> END
+
+== take_treasure ==
+~ money = money + 5000
+You take the treasure and now have {money} gold coins.  
+-> victory
 
 == victory ==
 With your arms full of gold and jewels, you make your way back to the cave mouth.  
